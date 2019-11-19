@@ -25,6 +25,7 @@ def get_elevations(elevations, rows, cols):
             upper = lower = left = right = diagonalRightUp = diagonalRightDown = diagonalLeftUp = diagonalLeftDown = 0
             curr = elevations[i][j]
             
+            # if there exists a neighboring cell in a given direction, save its elevation
             if (i-1 >= 0):               
                 upper = elevations[i-1][j] 
             if (j-1 >= 0 and i-1 >= 0):
@@ -36,7 +37,6 @@ def get_elevations(elevations, rows, cols):
                 lower = elevations[i+1][j]  
             if (j-1 >= 0 and i+1 < rows):
                 diagonalLeftDown = elevations[i+1][j-1]
-                
             if (j+1 < cols and i+1 < rows):
                 diagonalRightDown = elevations[i+1][j+1]
                 
@@ -46,7 +46,7 @@ def get_elevations(elevations, rows, cols):
             if (j+1 < cols):
                 right = elevations[i][j+1] 
                 
-            # assign codes based on water direction --        
+            # if the current cell has strinctly higher elevation than all of its neighbors, it is a high point      
             if (curr > upper and curr > lower and curr > right and curr > left and curr > diagonalRightUp and curr > diagonalRightDown and curr > diagonalLeftUp and curr > diagonalLeftDown):
                 flood_map[i][j] = True
             else:
@@ -65,8 +65,8 @@ def findHighPoints(elevations):
 
 def main():
     print("The elevation map for this plot of land is", findHighPoints([[5, 0, 0, 1],
-                           [0, 3, 4, 0],
-                           [2, 0, 0, 0]]))
+                                                                        [0, 3, 4, 0],
+                                                                        [2, 0, 0, 0]]))
     
 # Expected Output:
 # [[True, False, False, False],

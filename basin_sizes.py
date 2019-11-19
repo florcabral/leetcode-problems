@@ -26,26 +26,22 @@ def create_flood_path(flood_map, S):
         
         curr = flood_map[i]
         
-        # get upper neighbor if not first row
-        if (i > S):
+        if (i > S):                             # get upper neighbor if not first row
             upper = flood_map[i-S]  
         else: 
             upper = sys.maxsize
         
-        # get lower neighbor if not last row
-        if ((i + S) <= S**2):
+        if ((i + S) <= S**2):                   # get lower neighbor if not last row
             lower = flood_map[i+S]
         else:
             lower = sys.maxsize
-        
-        # get left neighbor if not first column
-        if ((i % S) != 1):
+    
+        if ((i % S) != 1):                      # get left neighbor if not first column
             left = flood_map[i-1]
         else:
             left = sys.maxsize
             
-        # get right neighbor if not last column
-        if ((i % S) != 0): 
+        if ((i % S) != 0):                      # get right neighbor if not last column
             right = flood_map[i+1]
         else:
             right = sys.maxsize
@@ -74,7 +70,7 @@ def create_flood_path(flood_map, S):
             path.append('L')
         
         # store flow codes for flow path finding
-        flood_direction_map.append(path)
+        flood_direction_map.append(path)        
         
         # format map to access elements via m[i] indexing
         flood_direction_map = [','.join(x) for x in flood_direction_map]
@@ -89,20 +85,16 @@ def retrieve_basin_size(flood_map, i, S):
     down = 0
     left = 0
     
-    # if the lower neighbor pointed up, visit it
-    if ((i + S) <= S**2) and (flood_map[i+S] == 'U'): 
+    if ((i + S) <= S**2) and (flood_map[i+S] == 'U'):               # if the lower neighbor pointed up, visit it
         down = retrieve_basin_size(flood_map, i+S, S)
     
-    # if the upper neighbor pointed down, visit it
-    if (i > S) and (flood_map[i-S] == 'D'): 
+    if (i > S) and (flood_map[i-S] == 'D'):                         # if the upper neighbor pointed down, visit it
         up = retrieve_basin_size(flood_map, i-S, S)
     
-    # if the left neighbor pointed right, visit it
-    if ((i % S) != 1) and (flood_map[i-1] == 'R'): 
+    if ((i % S) != 1) and (flood_map[i-1] == 'R'):                  # if the left neighbor pointed right, visit it
         left = retrieve_basin_size(flood_map, i-1, S)
         
-    # if the right neighbor pointed left, visit it
-    if ((i % S) != 0) and (flood_map[i+1] == 'L'): 
+    if ((i % S) != 0) and (flood_map[i+1] == 'L'):                  # if the right neighbor pointed left, visit it
         right = retrieve_basin_size(flood_map, i+1, S)
     
     # size counter
