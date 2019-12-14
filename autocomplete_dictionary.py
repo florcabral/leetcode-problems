@@ -112,12 +112,12 @@ def getAutocompleteScores(documentTitles, documentBodies, queries):
             lenbody = len(body)
             i = 0
             
-            while (i < lenquery and i < lenbody):   # found a match
+            while (i < lenquery and i < lenbody):   
                  
                 if (query[i] != body[i]):   # no match, break
                     break
                     
-                while (query[i] == body[i]):
+                while (query[i] == body[i]):    # found a match
                     
                     if (i == lenquery-1 or i == lenbody-1):
                         found[body] += 1
