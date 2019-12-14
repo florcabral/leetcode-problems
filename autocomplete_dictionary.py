@@ -1,7 +1,8 @@
 '''
 You have been tasked with gathering some qualitative metrics regarding a simple text search auto-complete feature. 
 You'll be given a set of documents, each having a title and a body of text.
-You can assume text and queries are comprised of A-Z characters. In documents, words are separated by a space; there is no other whitespace.
+You can assume text and queries are comprised of A-Z characters. In documents, words are separated by a space;
+there is no other whitespace.
 
 Every word in the documents can be assigned a numeric score. The score is defined as follows:
 
@@ -24,7 +25,8 @@ FURRY has a score of 2, because it appears twice in a document's body
 
 You'll then be given a set of user queries, each a string with no whitespace. 
 For each query, compute the highest score among all the words that could be auto-completed from it. 
-For instance, among the set of words above, the query 'AN' could be auto-completed into ANIMALS, ANT, and ANTELOPE. If no such words exist, the score is 0.
+For instance, among the set of words above, the query 'AN' could be auto-completed into ANIMALS, ANT, and ANTELOPE.
+If no such words exist, the score is 0.
 
 For example, given these following queries:
 
@@ -38,7 +40,8 @@ ELEPH would output 0, because it cannot auto-complete into any of the words
 '''
 The obvious data structure to write an autocomplete feature is a Trie. 
 But, in this solution I wanted to take advantage of Python's powerful dictionaries to accomplish the same task. 
-For every query, a temporary dictionary is created that stores each word from the documents that would autocomplete the query, mapped to the score it gives.
+For every query, a temporary dictionary is created that stores each word from the documents that would autocomplete the query,
+mapped to the score it gives.
 The final step is simple: pick the highest score among all autocompletes for that query.
 '''
 
