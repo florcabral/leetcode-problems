@@ -100,7 +100,6 @@ def getAutocompleteScores(documentTitles, documentBodies, queries):
                     break
                     
                 while (query[i] == title[i]):   # found a match
-                    
                     if (i == lenquery-1 or i == lentitle-1):
                         found[title] += 10
                         i = float('inf')
@@ -118,7 +117,6 @@ def getAutocompleteScores(documentTitles, documentBodies, queries):
                     break
                     
                 while (query[i] == body[i]):    # found a match
-                    
                     if (i == lenquery-1 or i == lenbody-1):
                         found[body] += 1
                         i = float('inf')
