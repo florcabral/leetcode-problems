@@ -37,7 +37,7 @@ ELEPH would output 0, because it cannot auto-complete into any of the words
 
 '''
 The obvious data structure to write an autocomplete feature is a Trie. 
-I wanted to take advantage of Python's powerful dictionaries in my solution. 
+But, in this solution I wanted to take advantage of Python's powerful dictionaries to accomplish the same task. 
 For every query, a temporary dictionary is created that stores each word from the documents that would autocomplete the query, mapped to the score it gives.
 The final step is simple: pick the highest score among all autocompletes for that query.
 '''
